@@ -17,7 +17,7 @@ If you have trouble during installation, please open an issue or pull request. :
 
 Clone this repo (or your own fork!) to your **home** directory (`/Users/username`).
 ```
-git clone https://github.com/mscoutermarsh/dotfiles ~/.dotfiles
+git clone https://github.com/amb1s1/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
