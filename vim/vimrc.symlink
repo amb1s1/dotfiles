@@ -1,11 +1,8 @@
 " 
 " Vim settings for @mscoutermarsh
 "
-
-" Settings in this file may depend on plugins, so let's install them first.
-" Not to be confused with the contents of ~/.vim/plugin/* which are
-" configuration options for each plugin and automatically loaded by Vim.
-source ~/.vim/plugin/plugins.vim
+"Pathogen Config
+execute pathogen#infect()
 
 " Leader Mappings
 map <Space> <leader>
@@ -13,7 +10,6 @@ map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
 
-syntax on
 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
@@ -62,9 +58,9 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
-colorscheme solarized8
+colorscheme solarized
 set background=dark
-
+let g:solarized_termtrans = 1
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
 
