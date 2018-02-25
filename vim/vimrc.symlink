@@ -11,9 +11,12 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,10 +75,10 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 "-------------------------------------------------------------------------------
 " Colors & Formatting
 "-------------------------------------------------------------------------------
-
+syntax enable
 colorscheme solarized
 set background=dark
-let g:solarized_termtrans = 1
+
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
 
