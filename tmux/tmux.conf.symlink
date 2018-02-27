@@ -24,13 +24,23 @@ set -g renumber-windows on
 
 # use 256 colors
 # set -g default-terminal 'tmux-256color-italic'
-set-option -ga terminal-overrides ",xterm-256color-italic:Tc"
 
 
 # change tmux bar colors
-set -g status-bg '#666666'
-set -g status-fg '#aaaaaa'
+# Status bar.
+set -g status-bg '#343d46'
+set -g status-fg white
+set -g status-left-length 40
+set -g status-left '#[fg=yellow]#S ⧉ '
+set -g status-right "#[fg=yellow]$USER@#h #[fg=magenta]%l:%M %p"
+set -g status-interval 60 # Default is 15.
+set -w -g main-pane-width 85
 
+# Automatically renumber window numbers on closing a pane (tmux >= 1.7).
+set -g renumber-windows on
+
+# Highlight active window.
+set -w -g window-status-current-bg red
 # Keep plenty of history for scrollback
 set -g history-limit 50000
 
@@ -64,13 +74,6 @@ bind C-k swap-pane -U
 # increase display time
 set -g display-panes-time 1200
 
-# status bar stuff
-set -g status-left-length 40
-
-# Simplify status bar display.
-set -g status-left '[#S]'
-set -g status-right "%I:%M %p "
-# set -g status-right "#[fg=red][44%%]#[default]   -  %I:%M %p "
 
 # Dismiss current pane to background window
 bind b break-pane -d
@@ -97,7 +100,6 @@ set -g base-index 1
 bind C-r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
 
 # Provide access to the clipboard for pbpaste, pbcopy (details: http://goo.gl/DN82E)
-set-option -g default-command "reattach-to-user-namespace -l zsh -l"
 set-window-option -g automatic-rename on
 
 # Enable VI mode

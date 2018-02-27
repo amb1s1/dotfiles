@@ -11,22 +11,54 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+Plugin 'pearofducks/ansible-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'vim-airline/vim-airline-themes'
-
+Plugin 'jakedouglas/exuberant-ctags'
+Plugin 'tmhedberg/SimpylFold'
+Bundle "lepture/vim-jinja"
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Leader Mappings
 map <Space> <leader>
 map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
+
+nnoremap ; :
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
+" Ignored files/directories from autocomplete (and CtrlP)
+set wildignore+=*/tmp/*
+set wildignore+=*.so
+set wildignore+=*.zip
+set wildignore+=*/vendor/bundle/*
+
+set wildignore+=*/node_modules/
+
+
+"Airline setting
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+
+"-------------------------------------------------------------------------------
+" Interface
+"-------------------------------------------------------------------------------
 
 
 set autoread                          " Auto reload changed files
@@ -50,6 +82,10 @@ set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
+set list
+set statusline+=%F
+set relativenumber
+let g:SimpylFold_docstring_preview = 1
 
 " Persistent undo
 set undodir=~/.vim/undo/
@@ -57,16 +93,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Ignored files/directories from autocomplete (and CtrlP)
-set wildignore+=*/tmp/*
-set wildignore+=*.so
-set wildignore+=*.zip
-set wildignore+=*/vendor/bundle/*
-set wildignore+=*/node_modules/
-
-"-------------------------------------------------------------------------------
-" Interface
-"-------------------------------------------------------------------------------
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
 set number            " Enable line numbers
 set scrolloff=5       " Leave 5 lines of buffer when scrolling
@@ -75,19 +104,8 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 "-------------------------------------------------------------------------------
 " Colors & Formatting
 "-------------------------------------------------------------------------------
-syntax enable
-colorscheme solarized
+colorscheme tomorrow-night
 set background=dark
-
-" Showcase comments in italics
-highlight Comment cterm=italic gui=italic
-
-" Get off my lawn - helpful when learning Vim :)
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
 "-------------------------------------------------------------------------------
 " Neovim-specific configurations
 "-------------------------------------------------------------------------------
@@ -104,3 +122,8 @@ if has('nvim')
   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
+
+"Nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
+
