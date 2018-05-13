@@ -1,1 +1,1 @@
-/Users/mscoutermarsh/.dotfiles/vim/vimrc.symlink
+/Users/amb1s1/dotfiles-1/playbooks/../configs/init.vim
